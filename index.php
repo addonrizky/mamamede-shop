@@ -1,10 +1,10 @@
 
 <?php  
  //DEV
- $connect = mysqli_connect("178.128.208.156", "rizkyaddon", "Jakarta123!", "mede_mama"); 
+ //$connect = mysqli_connect("178.128.208.156", "rizkyaddon", "Jakarta123!", "mede_mama"); 
  
  //PROD
- //$connect = mysqli_connect("localhost", "root", "Jakarta123!", "saham");  
+ $connect = mysqli_connect("localhost", "root", "Jakarta123!", "saham");  
 
  $query ="SELECT * FROM product where is_featured = 1";  
  $result = mysqli_query($connect, $query); 
