@@ -1,10 +1,10 @@
 
 <?php  
  //DEV
- //$connect = mysqli_connect("178.128.208.156", "rizkyaddon", "Jakarta123!", "mede_mama"); 
+ $connect = mysqli_connect("178.128.208.156", "rizkyaddon", "Jakarta123!", "mede_mama"); 
  
  //PROD
- $connect = mysqli_connect("localhost", "root", "Jakarta123!", "saham");  
+ //$connect = mysqli_connect("localhost", "root", "Jakarta123!", "saham");  
 
  $query ="SELECT * FROM product where is_featured = 1";  
  $result = mysqli_query($connect, $query); 
@@ -73,6 +73,7 @@
           <a href="#" style="border:dashed #fff 2px; color:#777;background-color: #f5f5f5" class="list-group-item">Mede</a>
           <a href="#" style="border:dashed #fff 2px; color:#777;background-color: #f5f5f5" class="list-group-item">Almond</a>
           <a href="#" style="border:dashed #fff 2px; color:#777;background-color: #f5f5f5" class="list-group-item">Kacang Tanah</a>
+          <a href="http://rizkyaddon.com/mamamede" target="_blank" style="border:dashed #fff 2px; color:#fff;background-color: #B89E78; font-weight: bold;margin-top:45px;" class="list-group-item">Daftar Harga</a>
         </div>
 
       </div>
@@ -107,6 +108,12 @@
           </a>
         </div>
 
+        <div class="row" style="border-top: dashed #B89E78 2px; padding-top: 15px">
+          <div class="col-lg-12">
+            <p style="font-weight: bold; color:#777">Produk Pilihan</p>
+          </div>
+        </div>
+
         <div class="row">
 
           <?php while($row = mysqli_fetch_object($result)):?>
@@ -129,89 +136,14 @@
             </div>
           </div>
           <?php endwhile;?>
-
-          <!--<div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-almond500gr.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Almond Matang 500gr</a>
-                </h4>
-                <h5>Rp82,000</h5>
-                <p class="card-text">Almond dimatangkan menggunakan oven, dikemas dalam ukurang sedang. Menjaga kolesterol tubuh</p>
-              </div>
-              <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Almond matang 500gr, apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-almond1000gr.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Almond Matang 1000gr</a>
-                </h4>
-                <h5>Rp160,000</h5>
-                <p class="card-text">Almond dimatangkan menggunakan oven, dikemas dalam ukurang besar. Menstabilkan tekanan darah</p>
-              </div>
-              <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Almond matang 1000gr, apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-cashew250gr.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Mede ori goreng 250gr (SUPER)</a>
-                </h4>
-                <h5>Rp40,000</h5>
-                <p class="card-text">Mede ori goreng ukuran kecil. Kudapan santai sehat</p>
-              </div>
-              <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Mede ori goreng 250gr (SUPER), apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-cashew500gr.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Mede ori goreng 500gr (SUPER)</a>
-                </h4>
-                <h5>Rp77,000</h5>
-                <p class="card-text">Mede ori goreng ukuran sedang. Kunyah terus bos.</p>
-              </div>
-              <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Mede ori goreng 500gr (SUPER), apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-cashew1000gr.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Mede ori goreng 1000gr (SUPER)</a>
-                </h4>
-                <h5>Rp150,000</h5>
-                <p class="card-text">Mede ori goreng ukuran besar. Cara diet dengan cepat.</p>
-              </div>
-              <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Mede ori goreng 1000gr (SUPER), apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
-              </div>
-            </div>
-          </div>
--->
         </div>
         <!-- /.row -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <a href="http://rizkyaddon.com/mamamede" target="_blank" style="float: right; text-align: right; font-weight: bold; color: #B89E78; margin-bottom: 15px">lihat semua produk >></a>
+          </div>
+        </div>
 
       </div>
       <!-- /.col-lg-9 -->
