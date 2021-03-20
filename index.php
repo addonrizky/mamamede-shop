@@ -1,3 +1,15 @@
+
+<?php  
+ //DEV
+ $connect = mysqli_connect("178.128.208.156", "rizkyaddon", "Jakarta123!", "mede_mama"); 
+ 
+ //PROD
+ //$connect = mysqli_connect("localhost", "root", "Jakarta123!", "saham");  
+
+ $query ="SELECT * FROM product where is_featured = 1";  
+ $result = mysqli_query($connect, $query); 
+ ?>  
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +28,7 @@
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
 
-</head>
+</head> 
 
 <body>
 
@@ -97,23 +109,28 @@
 
         <div class="row">
 
+          <?php while($row = mysqli_fetch_object($result)):?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/product-almond250gr.jpg" alt=""></a>
+              <?php
+                $image_object = json_decode($row->image_url);
+              ?>
+              <a href="#"><img class="card-img-top" src="images/<?php echo $image_object->main_image?>" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Almond Matang 250gr</a>
+                  <a href="#"><?php echo $row->product_name?></a>
                 </h4>
-                <h5>Rp43,000</h5>
-                <p class="card-text">Almond dimatangkan menggunakan oven. Baik untuk jantung dan mengontrol gula darah</p>
+                <h5>Rp<?php echo number_format($row->price_to_customer)?></h5>
+                <p class="card-text"><?php echo $row->product_desc?></p>
               </div>
               <div class="card-footer">
-                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk Almond matang 250gr, apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
+                <div onclick='window.open("https\://api.whatsapp.com/send?phone=6283892110929&text=Saya berminat untuk <?php echo $row->product_name?>, apakah stok masih ada?","_blank");' style="padding:5px; background: #efefef; text-align: center; cursor: pointer;border: dashed #fff 2px" class="text-muted"><b>beli dong!</b></div>
               </div>
             </div>
           </div>
+          <?php endwhile;?>
 
-          <div class="col-lg-4 col-md-6 mb-4">
+          <!--<div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="images/product-almond500gr.jpg" alt=""></a>
               <div class="card-body">
@@ -192,7 +209,7 @@
               </div>
             </div>
           </div>
-
+-->
         </div>
         <!-- /.row -->
 
