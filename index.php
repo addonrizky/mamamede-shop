@@ -115,17 +115,16 @@
         </div>
 
         <div class="row">
-
           <?php while($row = mysqli_fetch_object($result)):?>
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-6 mb-4" id="product-<?php echo $row->id?>">
             <div class="card h-100">
               <?php
                 $image_object = json_decode($row->image_url);
               ?>
-              <a href="#"><img class="card-img-top" src="images/<?php echo $image_object->main_image?>" alt=""></a>
+              <a><img style="cursor:pointer" data-toggle="modal" data-target=".bd-example-modal-lg-<?php echo $row->id?>" class="card-img-top" src="images/<?php echo $image_object->main_image?>" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#"><?php echo $row->product_name?></a>
+                  <a style="cursor:pointer" data-toggle="modal" data-target=".bd-example-modal-lg-<?php echo $row->id?>"><?php echo $row->product_name?></a>
                 </h4>
                 <h5>Rp<?php echo number_format($row->price_to_customer)?></h5>
                 <p class="card-text"><?php echo $row->product_desc?></p>
@@ -135,6 +134,37 @@
               </div>
             </div>
           </div>
+
+           <!-- modal -->
+            <div class="modal fade bd-example-modal-lg-<?php echo $row->id?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div id="carouselExampleControls-<?php echo $row->id?>" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <?php $detail_images = $image_object->detail_image?>
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="images/<?php echo $image_object->main_image?>" style="padding: 15px" alt="First slide">
+                      </div>
+
+                      <?php for($i=0;$i<count($detail_images);$i++):?>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="images/<?php echo $detail_images[$i]?>" style="padding: 15px" alt="Second slide">
+                        </div>
+                      <?php endfor?>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls-<?php echo $row->id?>" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls-<?php echo $row->id?>" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <?php endwhile;?>
         </div>
         <!-- /.row -->
@@ -142,6 +172,15 @@
         <div class="row">
           <div class="col-lg-12">
             <a href="http://rizkyaddon.com/mamamede" target="_blank" style="float: right; text-align: right; font-weight: bold; color: #B89E78; margin-bottom: 15px">lihat semua produk >></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+          <div class="col-lg-12">
+            <!-- Small modal -->
+            
           </div>
         </div>
 
